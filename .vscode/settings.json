@@ -1,6 +1,13 @@
 {
 	"files.associations": {
 		"sysexits.h": "c",
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"unistd.h": "c",
+		"stdlib.h": "c",
+		"image.h": "c",
+		"common.h": "c",
+		"camera.h": "c",
+		"vec3.h": "c",
+		"stdint.h": "c"
 	}
 }

@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <sysexits.h>
 #include <unistd.h>
-#include "common.h";
+#include "common.h"
 
 /**
  * @brief Raytracer entry point. The command line options are as follows:
@@ -29,7 +29,7 @@
 int main(int argc, char **argv)
 {
 	int in_fd, out_fd;
-	
+
 	/* Handle command line arguments */
 	switch(argc) {
 		case 3:	/* Redirect stdin to the input file */
