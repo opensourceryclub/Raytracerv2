@@ -78,9 +78,25 @@ Vec3 add(Vec3 v1, Vec3 v2)
 	v1.x = v1.x + v2.x;
 	v1.y = v1.y + v2.y;
 	v1.z = v1.z + v2.z;
+  
 	return v1;
 }
 
-Vec3 sub(Vec3, Vec3);
+/**
+ * @brief Subtracts v2 from v1
+ * 
+ * @param v1            The vector to subtract from
+ * @param v2            The vector to subtract
+ * @return Vec3 
+ */
+Vec3 sub(Vec3 v1, Vec3 v2)
+{
+  v1.x = v1.x - v2.x;
+  v1.y = v1.y - v2.y;
+  v1.z = v1.z - v2.z;
+
+  return v1;
+}
+
 float dot(Vec3, Vec3);
 Vec3 cross(Vec3, Vec3);
