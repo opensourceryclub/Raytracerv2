@@ -78,7 +78,7 @@ Vec3 add(Vec3 v1, Vec3 v2)
 	v1.x = v1.x + v2.x;
 	v1.y = v1.y + v2.y;
 	v1.z = v1.z + v2.z;
-  
+
 	return v1;
 }
 
@@ -98,5 +98,19 @@ Vec3 sub(Vec3 v1, Vec3 v2)
   return v1;
 }
 
-float dot(Vec3, Vec3);
+
+/**
+ * @brief Get the distance betweem two vectors
+ * 
+ * @param v1 
+ * @param v2 
+ * @return rt_float_t 
+ */
+rt_float_t dist(Vec3 v1, Vec3 v2)
+{
+  return sqrt(pow(v1.x - v2.x, 2) + pow(v1.y - v2.y, 2) + pow(v1.z - v2.z, 2))
+}
+
+
+rt_float_t dot(Vec3, Vec3);
 Vec3 cross(Vec3, Vec3);
