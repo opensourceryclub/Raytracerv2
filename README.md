@@ -2,6 +2,11 @@
 
 Decided to mess around and make another raytracer because why not?
 
+## Authors
+This project was written by
+* [Donald Isaac](https://github.com/DonIsaac)
+* [Emery Bacon](https://github.com/Acyion)
+* [Zach Wild](https://github.com/ZachWildd)
 ## Usage
 
 Install and build the project
@@ -14,9 +19,9 @@ make
 Run it
 
 ```sh
-./raytracer							# Reads/Writes from stdin/stdout
-./raytracer output.ppm				# Specify an output file for the rendered image
-./raytracer output.ppm input.txt	# Specify an image file and config file
+./raytracer                       # Reads/Writes from stdin/stdout
+./raytracer output.ppm            # Specify an output file for the rendered image
+./raytracer output.ppm input.txt  # Specify an image file and config file
 ```
 
 This project was made with some members from OpenSourcery. Check out our 
