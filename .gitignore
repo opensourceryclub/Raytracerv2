@@ -1,2 +1,5 @@
 # Built documentation files
 docs/
+
+# Live share files/folders
+.vscodee/ipch/
