@@ -20,6 +20,7 @@ typedef struct {
 
 rt_float_t len(Vec3);
 Vec3 nor(Vec3);
+t_float_t sqr (Vec3 v);
 Vec3 scl(Vec3, rt_float_t);
 Vec3 add(Vec3, Vec3);
 Vec3 sub(Vec3, Vec3);

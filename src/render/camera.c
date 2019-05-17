@@ -31,6 +31,7 @@
  * @param height 
  * @param rays 
  * @param ray_count 
+ * 
  * @return int 
  */
 static int construct_perspective_ray(Camera *camera, ImageData *img, int x,
