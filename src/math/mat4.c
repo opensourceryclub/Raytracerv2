@@ -17,7 +17,8 @@
  * 
  * @return Mat4                 4x4 matrix of 0's
  */
-Mat4 mat4_factory() {
+static Mat4 mat4_factory() 
+{
   int row = 0;
   int col = 0;
 
@@ -31,6 +32,20 @@ Mat4 mat4_factory() {
   }
 
   return *mat;
+}
+
+void mat4_destroy(Mat4 *mat4)
+{
+  int row = 0;
+  int col = 0;
+
+  while (row < MAT4_ROWS)
+  {
+    free(mat4->rows[row]);
+    row += 1;
+  }
+
+  free(mat4);
 }
 
 /**
