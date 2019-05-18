@@ -16,18 +16,34 @@
 #include <assert.h>
 #include <stdlib.h>
 #include "../../src/math/vec3.c"
+#include "../../src/tools/tools.c"
 
-int testLen();
+int test_vec3_len();
+int test_vec3_nor();
+int test_vec3_scl();
 
 int main() {
 
+  char *check = "\u2713";
+  char *failX = "\u2717";
+
+  printf("Running vec3 tests...\n");
+
   // test len
-  testLen();
+  if (test_vec3_len())
+  {
+    printf("\t%s test_vec3_len passed \n", check);
+  }
+  else
+  {
+    printf("\t%s test_vec3_len failed \n", failX);
+  }
+  
 
   return 0;
 }
 
-int testLen() {
+int test_vec3_len() {
   // arrange
   rt_float_t expectedLen = 4;
 
@@ -40,40 +56,43 @@ int testLen() {
   rt_float_t actualLen = len(*actVec3);
 
   // assert
-  assert(actualLen == expectedLen);
+  assert(fl_are_equal(actualLen, expectedLen));
 
   // free
   free(actVec3);
 
-  return 0;
+  return 1;
 }
 
-int testNor() {
+int test_vec3_nor() {
   // arrange
-  Vec3* actVec3 = malloc(sizeOf(Vec3));
-  actVec3->x = 3;
-  actVec3->y = 3;
-  actVec3->z = 3;
+  Vec3 actVec3 = vec3_factory();
+  actVec3.x = 3;
+  actVec3.y = 3;
+  actVec3.z = 3;
 
   rt_float_t expX = 1;
   rt_float_t expY = 1;
   rt_float_t expZ = 1;
 
   // act
-  Vec3 actNor = nor(*actVec3);
+  Vec3 actNor = nor(actVec3);
 
   // assert
-  assert()
 
   // free
-  free(actVec3);
+  free(&actVec3);
+
+  return 0;
 
 }
 
-int testScl() {
+int test_vec3_scl() {
   // arrange
 
   // act
   // assert
+
+  return 0;
 }
 
