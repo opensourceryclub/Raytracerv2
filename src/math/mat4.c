@@ -13,6 +13,27 @@
 #include "mat4.h"
 
 /**
+ * @brief Returns a 4x4 matrix of 0's.
+ * 
+ * @return Mat4   4x4 matrix of 0's
+ */
+Mat4* mat4_factory() {
+  int row = 0;
+  int col = 0;
+
+  Mat4 *mat = malloc(sizeof(Mat4));                              // alloc mat4
+  mat->rows = calloc(MAT4_ROWS, sizeof(rt_float_t *));           // alloc rows
+
+  while (row < MAT4_ROWS) 
+  {
+    mat->rows[row] = calloc(MAT4_COLS, sizeof(rt_float_t * ));   // alloc cols
+    row += 1;
+  }
+
+  return mat;
+}
+
+/**
  * @brief Returns the 4x4 identity matrix
  * 
  * @return Mat4   4x4 identity matrix
@@ -22,14 +43,10 @@ Mat4 mat4_identity()
   int row = 0;
   int col = 0;
 
-  Mat4 *mat = malloc(sizeof(Mat4));                              // alloc mat4
-  mat->rows = calloc(MAT4_ROWS, sizeof(rt_float_t *));           // alloc rows
+  Mat4 *mat = mat4();
 
   while (row < MAT4_ROWS) 
   {
-
-    mat->rows[row] = calloc(MAT4_COLS, sizeof(rt_float_t * ));   // alloc cols
-
     col = 0;
     while (col < MAT4_COLS) 
     {
@@ -39,7 +56,6 @@ Mat4 mat4_identity()
       }
       col += 1;
     }
-
     row += 1;
   }
 
