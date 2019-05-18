@@ -24,6 +24,34 @@ rt_float_t len(Vec3 v)
 	#endif
 }
 
+Vec3 vec3_factory()
+{
+	Vec3 *vec = malloc(sizeof(Vec3));
+	vec->x = 0;
+	vec->y = 0;
+	vec->z = 0;
+
+	return *vec;
+}
+
+/**
+ * @brief Creates a new Vec3 with x,y,z
+ * 
+ * @param x 										x component of new vector
+ * @param y 										y component of new vector
+ * @param z 										z component of new vector 
+ * @return Vec3 								new Vec3 with x,y,z
+ */
+Vec3 vec3_factory_x_y_z(rt_float_t x, rt_float_t y, rt_float_t z)
+{
+	Vec3 vec = vec3_factory();
+	vec.x = x;
+	vec.y = y;
+	vec.z = z;
+
+	return vec;
+}
+
 /**
  * @brief Normalizes a vector. Normalized vectors have a magnitude of 1.
  * 
@@ -38,7 +66,7 @@ Vec3 nor(Vec3 v)
 	/* Normalize that boye */
 	v.x /= v_len;
 	v.y /= v_len;
-	v.z /+ v_len;
+	v.z /= v_len;
 	
 	return v;
 }
@@ -62,7 +90,7 @@ Vec3 scl(Vec3 v, rt_float_t s)
 
 rt_float_t sqr (Vec3 v)
 {
-	
+	return 1;
 }
 
 /**
