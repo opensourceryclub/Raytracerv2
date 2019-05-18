@@ -3,3 +3,12 @@ docs/
 
 # Live share files/folders
 .vscode/ipch/
+
+# OSX Files
+.DS_Store
+
+# XCode debugging generated files
+*.dSYM
+
+# Compiled c files
+*.o
