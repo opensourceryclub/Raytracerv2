@@ -43,7 +43,7 @@ Mat4 mat4_identity()
   int row = 0;
   int col = 0;
 
-  Mat4 *mat = mat4();
+  Mat4 *mat = mat4_factory();
 
   while (row < MAT4_ROWS) 
   {
