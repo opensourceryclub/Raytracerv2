@@ -68,49 +68,83 @@ rt_float_t sqr (Vec3 v)
 /**
  * @brief Adds two vectors
  * 
- * @param v1						The 1st vector to add
+ * @param u						The 1st vector to add
  * @param s2						The 2nd vector to add
  * 
  * @return Vec3 				The two vectors added
  */
-Vec3 add(Vec3 v1, Vec3 v2)
+Vec3 add(Vec3 u, Vec3 v)
 {
-	v1.x = v1.x + v2.x;
-	v1.y = v1.y + v2.y;
-	v1.z = v1.z + v2.z;
+	u.x = u.x + v.x;
+	u.y = u.y + v.y;
+	u.z = u.z + v.z;
 
-	return v1;
+	return u;
 }
 
 /**
- * @brief Subtracts v2 from v1
+ * @brief Subtracts v from u.
  * 
- * @param v1            The vector to subtract from
- * @param v2            The vector to subtract
+ * @param u            The vector to subtract from
+ * @param v            The vector to subtract
  * @return Vec3 
  */
-Vec3 sub(Vec3 v1, Vec3 v2)
+Vec3 sub(Vec3 u, Vec3 v)
 {
-  v1.x = v1.x - v2.x;
-  v1.y = v1.y - v2.y;
-  v1.z = v1.z - v2.z;
+  u.x = u.x - v.x;
+  u.y = u.y - v.y;
+  u.z = u.z - v.z;
 
-  return v1;
+  return u;
 }
 
 
 /**
- * @brief Get the distance betweem two vectors
+ * @brief Gets the distance between two vectors.
  * 
- * @param v1 
- * @param v2 
- * @return rt_float_t 
+ * @param u 					The first vector
+ * @param v 					The second vector
+ * 
+ * @return rt_float_t 			The distance between the two vectors
  */
-rt_float_t dist(Vec3 v1, Vec3 v2)
+rt_float_t dist(Vec3 u, Vec3 v)
 {
-  return sqrt(pow(v1.x - v2.x, 2) + pow(v1.y - v2.y, 2) + pow(v1.z - v2.z, 2))
+  return sqrt(dot(u, v));
 }
 
+/**
+ * @brief Takes the dot product of two vectors.
+ * 
+ * @see https://en.wikipedia.org/wiki/Dot_product
+ * 
+ * @param u 					The first vector
+ * @param v 					The second vector
+ * 
+ * @return rt_float_t 			The result of the dot product
+ */
+rt_float_t dot(Vec3 u, Vec3 v)
+{
+	return 	u.x * v.x +
+			u.y * v.y +
+			u.z * v.z;
+}
 
-rt_float_t dot(Vec3, Vec3);
-Vec3 cross(Vec3, Vec3);
+/**
+ * @brief Takes the cross product of two vectors.
+ * 
+ * @see https://en.wikipedia.org/wiki/Cross_product
+ * 
+ * @param u 					The first vector
+ * @param v 					The second vector
+ * 
+ * @return Vec3 				The result of the cross product
+ */
+Vec3 cross(Vec3 u, Vec3 v)
+{
+	Vec3 cross;
+	cross.x = u.y * v.z - u.z * v.y; 
+	cross.y = u.z * v.x - u.x * v.z; 
+	cross.z = u.x * v.y - u.y * v.x;
+
+	return cross;
+}
