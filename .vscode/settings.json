@@ -8,6 +8,7 @@
 		"common.h": "c",
 		"camera.h": "c",
 		"vec3.h": "c",
-		"stdint.h": "c"
+		"stdint.h": "c",
+		"ray3.h": "c"
 	}
 }

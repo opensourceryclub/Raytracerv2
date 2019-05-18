@@ -27,14 +27,11 @@
  * @param img 
  * @param x 
  * @param y 
- * @param width 
- * @param height 
  * @param rays 
  * @param ray_count 
- * 
  * @return int 
  */
-static int construct_perspective_ray(Camera *camera, ImageData *img, int x,
+static int construct_perspective_rays(Camera *camera, ImageData *img, int x,
 			int y, Ray3 **rays, int *ray_count)
 {
 	rt_float_t num_rays_per_side = img->antialiasing ? AA_RAYS_PER_SIDE : 1,
@@ -45,6 +42,7 @@ static int construct_perspective_ray(Camera *camera, ImageData *img, int x,
 			camY,
 			width = img->width,
 			height = img->height;
+	Vec3 dir;
 
 	*ray_count = num_rays_per_side * num_rays_per_side;
 	(*rays) = malloc(*ray_count * sizeof(Ray3));
@@ -58,7 +56,8 @@ static int construct_perspective_ray(Camera *camera, ImageData *img, int x,
 		camX = (2.0 * (mx / (width) - 1.0) * aspect_ratio(img));
 		camY = -(2.0 * (my / height) - 1.0);
 
-		(*rays)[num_rays_per_side * i + j]
+		dir = 
+		(*rays)[(int)(num_rays_per_side * i + j)]
 	}
 
 	

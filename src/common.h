@@ -17,6 +17,8 @@
 #define __COMMON_H__
 
 #define MAX_STR_LEN 80			/* Maximum number of characters in a string */
+#define MAX_LINE_LEN 1024		/* Maximum number of characters in a line, 
+								   usually a line in a file */
 #define USE_FLOAT				/* Set this to use float types. If not set,
 								   use doubles */
 
