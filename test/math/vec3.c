@@ -22,7 +22,8 @@ int test_vec3_len();
 int test_vec3_nor();
 int test_vec3_scl();
 
-int main() {
+int run_vec3_tests() 
+{
 
   char *check = "\u2713";
   char *failX = "\u2717";
@@ -43,7 +44,8 @@ int main() {
   return 0;
 }
 
-int test_vec3_len() {
+int test_vec3_len()
+{
   // arrange
   rt_float_t expectedLen = 4;
 
@@ -64,7 +66,8 @@ int test_vec3_len() {
   return 1;
 }
 
-int test_vec3_nor() {
+int test_vec3_nor()
+{
   // arrange
   Vec3 actVec3 = vec3_factory();
   actVec3.x = 3;
@@ -87,7 +90,8 @@ int test_vec3_nor() {
 
 }
 
-int test_vec3_scl() {
+int test_vec3_scl()
+{
   // arrange
 
   // act

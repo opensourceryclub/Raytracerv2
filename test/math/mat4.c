@@ -22,8 +22,10 @@
 int test_mat4_factory();
 int test_mat4_identity();
 int test_mat4_translation();
+int test_mat4_destory();
 
-int main() {
+int run_mat4_tests()
+{
 
   char *check = "\u2713";
   char *failX = "\u2717";
@@ -51,6 +53,11 @@ int main() {
     printf("\t%s test_mat4_translation passed \n", check);
   else
     printf("\t%s test_mat4_translation passed \n", failX);
+
+  if(test_mat4_destory())
+    printf("\t%s test_mat4_destory passed \n", check);
+  else
+    printf("\t%s test_mat4_destory passed \n", failX);
 
   return 0;
 }
@@ -95,6 +102,18 @@ int test_mat4_factory()
     row += 1;
   }
 
+  return 1;
+}
+
+int test_mat4_destory()
+{
+  // arrange
+  int row = 0;
+  Mat4 actMat4 = mat4_factory();
+
+  // act
+  // assert - no errors make happy
+  mat4_destroy(&actMat4);
   return 1;
 }
 

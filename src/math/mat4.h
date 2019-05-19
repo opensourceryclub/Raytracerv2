@@ -22,6 +22,8 @@ typedef struct {
 	rt_float_t **rows;
 } Mat4;
 
+/* Mat4 factory functions */
+void mat4_destroy();
 Mat4 mat4_identity();
 Mat4 mat4_translation(Vec3);
 Mat4 mat4_rotation_x(Vec3);
