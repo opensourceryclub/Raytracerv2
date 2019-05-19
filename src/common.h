@@ -10,11 +10,12 @@
  * @copyright Copyright (c) 2019 Open Sourcery
  * 
  */
-#include <sys/types.h>
-#include <stdint.h>
-
 #ifndef __COMMON_H__
 #define __COMMON_H__
+
+#include <sys/types.h>
+#include <stdint.h>
+#include <float.h>
 
 #define MAX_STR_LEN 80			/* Maximum number of characters in a string */
 #define MAX_LINE_LEN 1024		/* Maximum number of characters in a line, 
@@ -22,12 +23,20 @@
 #define USE_FLOAT				/* Set this to use float types. If not set,
 								   use doubles */
 
+/* Set the rt_float_t depending on the USE_FLOAT settign */
 #ifdef USE_FLOAT
 typedef float 
 #else
 typedef double
 #endif
 rt_float_t;
+
+/* Define the machine epsilon to use */
+#ifdef USE_FLOAT 
+#	define EPSILON FLT_EPSILON
+#else 
+#	define EPSILON DBL_EPSILON
+#endif
 
 /**
  * @brief RGB code at a pixel.

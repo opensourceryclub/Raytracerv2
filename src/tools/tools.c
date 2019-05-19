@@ -13,8 +13,15 @@
 #include <stdlib.h>
 #include "tools.h"
 
-rt_float_t EPSILON = 0.0000000001;
-
+/**
+ * @brief Compares two floating point numbers and checks if they are
+ * approximately equal, taking machine epsilon into account.
+ * 
+ * @param a                     The first floating point number
+ * @param b                     The second floating point number
+ * 
+ * @return int                  1 if the numbers are equal; 0 otherwise.
+ */
 int fl_are_equal(rt_float_t a, rt_float_t b)
 {
   if (a - b < EPSILON)
