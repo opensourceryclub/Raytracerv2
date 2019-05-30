@@ -18,8 +18,8 @@ typedef struct {
 	rt_float_t x, y, z;
 } Vec3;
 
-int vec3_factory(Vec3 **);
-Vec3 vec3_factory_x_y_z(rt_float_t x, rt_float_t y, rt_float_t z);
+int vec3_factory_zero(Vec3 **);
+int vec3_factory(rt_float_t x, rt_float_t y, rt_float_t z, Vec3 **);
 rt_float_t len(Vec3);
 Vec3 nor(Vec3);
 rt_float_t sqr (Vec3 v);

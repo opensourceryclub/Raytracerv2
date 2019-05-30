@@ -25,13 +25,14 @@ rt_float_t len(Vec3 v)
 }
 
 /**
- * @brief Creates and initializes a Vec3 on the heap.
+ * @brief Creates and initializes a Vec3 on the heap with all coordinates
+ * set to 0.
  * 
  * @param[out] vec 					Address of the Vec3 pointer to initialize
  * 
  * @return int 						1 on success, 0 on failure
  */
-int vec3_factory(Vec3 **vec)
+int vec3_factory_zero(Vec3 **vec)
 {
 	*vec = malloc(sizeof(Vec3));
 
@@ -45,21 +46,26 @@ int vec3_factory(Vec3 **vec)
 }
 
 /**
- * @brief Creates a new Vec3 with x,y,z
+ * @brief Creates a new Vec3 with its coordinates set to a location.
  * 
- * @param x 										x component of new vector
- * @param y 										y component of new vector
- * @param z 										z component of new vector 
- * @return Vec3 								new Vec3 with x,y,z
+ * @param[in] x 				x component of new vector
+ * @param[in] y 				y component of new vector
+ * @param[in] z 				z component of new vector 
+ * @param[out] vec 				Address of the Vec3 pointer to initialize
+ * 
+ * @return int 					1 on success, 0 on failure
  */
-Vec3 vec3_factory_x_y_z(rt_float_t x, rt_float_t y, rt_float_t z)
+int vec3_factory(rt_float_t x, rt_float_t y, rt_float_t z, Vec3 ** vec)
 {
-	Vec3 vec = vec3_factory();
-	vec.x = x;
-	vec.y = y;
-	vec.z = z;
+	*vec = malloc(sizeof(Vec3));
 
-	return vec;
+	if (!vec)
+		return 0;
+	(*vec)->x = x;
+	(*vec)->y = y;
+	(*vec)->z = z;
+
+	return 1;
 }
 
 /**
