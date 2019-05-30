@@ -17,21 +17,31 @@
 
 rt_float_t len(Vec3 v)
 {
-	#ifdef USE_FLOAT
-		return sqrtf(sqr(v));
-	#else
-		return sqrt(sqr(v));
-	#endif
+#ifdef USE_FLOAT
+	return sqrtf(sqr(v));
+#else
+	return sqrt(sqr(v));
+#endif
 }
 
-Vec3 vec3_factory()
+/**
+ * @brief Creates and initializes a Vec3 on the heap.
+ * 
+ * @param[out] vec 					Address of the Vec3 pointer to initialize
+ * 
+ * @return int 						1 on success, 0 on failure
+ */
+int vec3_factory(Vec3 **vec)
 {
-	Vec3 *vec = malloc(sizeof(Vec3));
-	vec->x = 0;
-	vec->y = 0;
-	vec->z = 0;
+	*vec = malloc(sizeof(Vec3));
 
-	return *vec;
+	if (!vec)
+		return 0;
+	(*vec)->x = 0;
+	(*vec)->y = 0;
+	(*vec)->z = 0;
+
+	return 1;
 }
 
 /**
@@ -62,12 +72,12 @@ Vec3 vec3_factory_x_y_z(rt_float_t x, rt_float_t y, rt_float_t z)
 Vec3 nor(Vec3 v)
 {
 	rt_float_t v_len = len(v);
-	
+
 	/* Normalize that boye */
 	v.x /= v_len;
 	v.y /= v_len;
 	v.z /= v_len;
-	
+
 	return v;
 }
 
@@ -84,11 +94,11 @@ Vec3 scl(Vec3 v, rt_float_t s)
 	v.x = v.x * s;
 	v.y = v.y * s;
 	v.z = v.z * s;
-	
+
 	return v;
 }
 
-rt_float_t sqr (Vec3 v)
+rt_float_t sqr(Vec3 v)
 {
 	return 1;
 }
@@ -119,13 +129,12 @@ Vec3 add(Vec3 u, Vec3 v)
  */
 Vec3 sub(Vec3 u, Vec3 v)
 {
-  u.x = u.x - v.x;
-  u.y = u.y - v.y;
-  u.z = u.z - v.z;
+	u.x = u.x - v.x;
+	u.y = u.y - v.y;
+	u.z = u.z - v.z;
 
-  return u;
+	return u;
 }
-
 
 /**
  * @brief Gets the distance between two vectors.
@@ -137,7 +146,7 @@ Vec3 sub(Vec3 u, Vec3 v)
  */
 rt_float_t dist(Vec3 u, Vec3 v)
 {
-  return sqrt(dot(u, v));
+	return sqrt(dot(u, v));
 }
 
 /**
@@ -152,9 +161,9 @@ rt_float_t dist(Vec3 u, Vec3 v)
  */
 rt_float_t dot(Vec3 u, Vec3 v)
 {
-	return 	u.x * v.x +
-			u.y * v.y +
-			u.z * v.z;
+	return u.x * v.x +
+		   u.y * v.y +
+		   u.z * v.z;
 }
 
 /**
@@ -170,9 +179,42 @@ rt_float_t dot(Vec3 u, Vec3 v)
 Vec3 cross(Vec3 u, Vec3 v)
 {
 	Vec3 cross;
-	cross.x = u.y * v.z - u.z * v.y; 
-	cross.y = u.z * v.x - u.x * v.z; 
+	cross.x = u.y * v.z - u.z * v.y;
+	cross.y = u.z * v.x - u.x * v.z;
 	cross.z = u.x * v.y - u.y * v.x;
 
 	return cross;
+}
+
+/**
+ * @brief Calculates the centroid of a set of Vec3s.
+ * 
+ * The centroid is the average point of the Vec3 set. It is calculated by 
+ * performing the arithmetic mean.
+ * 
+ * If there are no Vec3s in the list, the zero Vec3 is returned.
+ * 
+ * @param c 					The number of Vec3s in the set
+ * @param vecs 					The set of Vec3s
+ * 
+ * @return Vec3 				The calculated centroid Vec3
+ */
+Vec3 centroid(int c, Vec3 *vecs)
+{
+	Vec3 centroid = {0, 0, 0};
+	int i;
+	rt_float_t denominator;
+
+	if (c <= 0)
+		return centroid;
+
+	denominator = 1.0 / (rt_float_t)c;
+
+	for (i = 0; i < c; i++)
+	{
+		centroid = add(centroid, vecs[i]);
+	}
+	
+	centroid = scl(centroid, denominator);
+	return centroid;
 }
