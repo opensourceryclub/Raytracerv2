@@ -1,6 +1,11 @@
 # Built documentation files
 docs/
 
+# Temporary files
+tmp/*
+**/*/tmp/*
+*.tmp
+
 # Live share files/folders
 .vscode/ipch/
 

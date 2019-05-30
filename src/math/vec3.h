@@ -14,10 +14,25 @@
 
 #include "../common.h"
 
+/**
+ * @brief Represents a Vector or a point in 3 dimensional space.
+ * 
+ * Each Vec3 contains an x, y, and z coordinate. No constructs about which
+ * vector/affine/linear space should be used; Vec3s simply store data. It is up
+ * to the user to determine their meaning.
+ * 
+ */
 typedef struct {
 	rt_float_t x, y, z;
 } Vec3;
 
+/* Vec3 constants. Basis and zero vectors */
+const Vec3 VEC3_ZERO = {0.0, 0.0, 0.0};
+const Vec3 VEC3_I = {1.0, 0.0, 0.0};
+const Vec3 VEC3_J = {0.0, 1.0, 0.0};
+const Vec3 VEC3_K = {0.0, 0.0, 1.0};
+
+/* Function definitions. Check vec3.c for documentation. */
 int vec3_factory_zero(Vec3 **);
 int vec3_factory(rt_float_t x, rt_float_t y, rt_float_t z, Vec3 **);
 rt_float_t len(Vec3);
